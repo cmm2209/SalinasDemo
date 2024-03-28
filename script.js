@@ -1,23 +1,14 @@
 const cb = document.getElementById("showTrans");
-const stylesheet = document.styleSheets[1];
-let elementRules;
+let sheet = document.createElement('style');
 
 document.addEventListener('click', () => {
   if (cb.checked) {
-  for(let i = 0; i < stylesheet.cssRules.length; i++) {
-    if(stylesheet.cssRules[i].selectorText === '.child-flex1a') {
-      elementRules = stylesheet.cssRules[i];
-    }
-  }
-  elementRules.style.setProperty('display', 'block')
-    ;
+    sheet.innerHTML = ".child-flex1a {flex-basis: 40%; display: block;}";
+    document.body.appendChild(sheet);
   }                          
- else {  for(let i = 0; i < stylesheet.cssRules.length; i++) {
-    if(stylesheet.cssRules[i].selectorText === '.child-flex1a') {
-      elementRules = stylesheet.cssRules[i];
-    }
-  }
-  elementRules.style.setProperty('display', 'none')
+ else {  
+  sheet.innerHTML = ".child-flex1a {flex-basis: 40%; display: none;}";
+    document.body.appendChild(sheet);
  }
  } );
 
