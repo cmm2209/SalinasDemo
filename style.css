@@ -183,7 +183,7 @@ nav#slide-menu {
 		transition: all 300ms;
 
 		li {
-			color: #dfe5eb;
+			color: #ffffff;
 			padding: 6px 0;
 			cursor: pointer;
 
@@ -286,7 +286,11 @@ div#content {
 			line-height: 36px;
 		}
 
-		&:hover { background: #159A9C; &:before { color: #fcfeff; } }
+		img {
+			position:absolute;
+			top: 10px;
+			left: 10px;
+		}
 	}
 }
 
