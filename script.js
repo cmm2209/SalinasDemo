@@ -1,7 +1,7 @@
 const cb = document.getElementById("showTrans");
 let sheet = document.createElement('style');
 
-document.addEventListener('click', () => {
+document.getElementById("showTrans").addEventListener('click', () => {
   if (cb.checked) {
     sheet.innerHTML = ".child-flex1a {flex-basis: 40%; display: block;}";
     document.body.appendChild(sheet);
