@@ -19,26 +19,30 @@ document.getElementById('sources-here').innerHTML = parsed};
 populate();
 
 /* Enable reset button */
-document.getElementById("reset").addEventListener('click', populate);
-document.getElementById("reset").addEventListener('click', () => { document.getElementById("earliestDate").value = "-30000";         document.getElementById("latestDate").value = "2020";
- });
-
-/* Enable chronological filtering */
-document.getElementById("filter").addEventListener('click', () => {
-  let earliestDate;
-    earliestDate = document.getElementById("earliestDate").value;          let latestDate;
-    latestDate = document.getElementById("latestDate").value;
-    let filteredSources = sources.filter(source => source.antequem >= earliestDate && source.postquem <= latestDate)
-  
-    let parsed = "";
-  if (filteredSources.length >=1) {
-    for (i = 0; i < filteredSources.length; i++) {
-       for (i = 0; i < filteredSources.length; i++) {
-  parsed += "<p class='hit'>" + filteredSources[i].author + ", " + filteredSources[i].title + 
-   " (" + filteredSources[i].dating + ")" + 
-    "</p>" + "<br/>" + "\n";};         
-     document.getElementById('sources-here').innerHTML = parsed}
-} else {
-    document.getElementById('sources-here').innerHTML = "No sources found"}
-})
+function reset () {
+    document.getElementById("reset").addEventListener('click', populate);
+    document.getElementById("reset").addEventListener('click', () => { document.getElementById("earliestDate").value = "-30000";         document.getElementById("latestDate").value = "2020";
+     });
+    };
+    reset ();
+    
+    /* Enable chronological filtering */
+    function chronofilter () {
+    document.getElementById("filter").addEventListener('click', () => {
+      let earliestDate;
+        earliestDate = document.getElementById("earliestDate").value;          let latestDate;
+        latestDate = document.getElementById("latestDate").value;
+        let filteredSources = sources.filter(source => source.antequem >= earliestDate && source.postquem <= latestDate)
       
+        let parsed = "";
+      if (filteredSources.length >=1) {
+        for (i = 0; i < filteredSources.length; i++) {
+           for (i = 0; i < filteredSources.length; i++) {
+      parsed += "<p class='hit'>" + filteredSources[i].author + ", " + filteredSources[i].title + 
+       " (" + filteredSources[i].dating + ")" + 
+        "</p>" + "<br/>" + "\n";};         
+         document.getElementById('sources-here').innerHTML = parsed}
+    } else {
+        document.getElementById('sources-here').innerHTML = "No sources found"}
+    })};
+    chronofilter ();
