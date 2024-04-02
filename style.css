@@ -15,6 +15,16 @@ body {
   font-size: 90%;
 }
 
+.results {
+	width: 50%;
+	margin: auto;
+}
+
+.hit {
+	margin: 10px;
+	padding: 10px;
+}
+  
 .unblue {
   color:#002333;
 }

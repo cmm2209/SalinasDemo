@@ -1,25 +1,44 @@
-let sources = [
-    { author: 'Song Hyon', title: 'Guide to the Study of Music', earliest: 1493, latest: 1493, url: 'http://www.google.com' },
-    { author: 'Franciscus Salinas', title: 'De Musica', earliest: 1577, latest: 1577, url: 'https://cmm2209.github.io/SalinasDemo/index.html' },
-  { author: 'Nakane Akira', title: 'Exhibiting the origin of melodies/notes', earliest: 1692, latest: 1692, url: 'http://www.qwantz.com' },
-   { author: 'David the Invincible', title: 'Definitions and Divisions of Philosophy', earliest: 450, latest: 649, url: 'http://www.nytimes.com' },
+/* Source List */
+let sourcesOrig = [
+    { author: 'Song Hyon', title: '<a href="http://www.google.com" class="unblue">Guide to the Study of Music</a>', dating: '1493', postquem: 1493, antequem: 1493, },
+    { author: 'Franciscus Salinas', title: '<a href="https://cmm2209.github.io/SalinasDemo/index.html"  class="unblue">De Musica</a>', dating: '1577', postquem: 1577, antequem: 1577, },
+  { author: 'Nakane Akira', title: '<a href="http://www.qwantz.com"  class="unblue">Exhibiting the origin of melodies/notes</a>', dating: '1692', postquem: 1692, antequem: 1692, },
+   { author: 'David the Invincible', title: '<a href="http://www.nytimes.com"  class="unblue">Definitions and Divisions of Philosophy</a>', dating: '6th century?', postquem: 450, antequem: 649, },
 ];
+/* Sort sources chronologically */
+let sources = sourcesOrig.sort((firstItem, secondItem) => firstItem.postquem - secondItem.postquem) ;
 
-document.getElementById("dateSelect").addEventListener('change', () => {
-let postQuem;
-postQuem = document.getElementById("dateAfter").value;
-let anteQuem;
-anteQuem = document.getElementById("dateBefore").value;
-let filteredSources = [];
-for (let i= 0; i<sources.length; i++) {
-    if (sources[i].earliest > postQuem && sources[i].latest < anteQuem ) {
-        filteredSources = [...filteredSources, sources[i]];
-    }
-};
-let parsed = "";
-for (i = 0; i < filteredSources.length; i++) {
-            var myobj = filteredSources[i];
-            for (var property in myobj) {
-                parsed += property + ": " + myobj[property] + "\n";
-            }          
- document.getElementById('sources-here').innerHTML = parsed};  });
+/* Display sources on load */
+function populate () {
+let parsed = ""; 
+for (i = 0; i < sources.length; i++) {
+  parsed += "<p class='hit'>" + sources[i].author + ", " + sources[i].title + 
+   " (" + sources[i].dating + ")" + 
+    "</p>" + "\n";};
+document.getElementById('sources-here').innerHTML = parsed};
+populate();
+
+/* Enable reset button */
+document.getElementById("reset").addEventListener('click', populate);
+document.getElementById("reset").addEventListener('click', () => { document.getElementById("earliestDate").value = "-30000";         document.getElementById("latestDate").value = "2020";
+ });
+
+/* Enable chronological filtering */
+document.getElementById("filter").addEventListener('click', () => {
+  let earliestDate;
+    earliestDate = document.getElementById("earliestDate").value;          let latestDate;
+    latestDate = document.getElementById("latestDate").value;
+    let filteredSources = sources.filter(source => source.antequem >= earliestDate && source.postquem <= latestDate)
+  
+    let parsed = "";
+  if (filteredSources.length >=1) {
+    for (i = 0; i < filteredSources.length; i++) {
+       for (i = 0; i < filteredSources.length; i++) {
+  parsed += "<p class='hit'>" + filteredSources[i].author + ", " + filteredSources[i].title + 
+   " (" + filteredSources[i].dating + ")" + 
+    "</p>" + "<br/>" + "\n";};         
+     document.getElementById('sources-here').innerHTML = parsed}
+} else {
+    document.getElementById('sources-here').innerHTML = "No sources found"}
+})
+      
