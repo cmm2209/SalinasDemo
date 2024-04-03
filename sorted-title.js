@@ -15,7 +15,16 @@ let sourcesOrig = [
     { author: 'Anonymous', title: '<a href="http://www.nytimes.com"  class="unblue">Bells of Kings</a>', simpleTitle: 'Bells of Kings', dating: '200 AD', postquem: 180, antequem: 220, },
 ];
 /* Sort sources by title */
-let sources = sourcesOrig.sort((firstItem, secondItem) => firstItem.simpleTitle - secondItem.simpleTitle) ;
+let sources = sourcesOrig.sort(function (a, b) {
+  if (a.simpleTitle < b.simpleTitle) {
+    return -1;
+  }
+  if (a.simpleTitle > b.simpleTitle) {
+    return 1;
+  }
+  return 0;
+});
+//((firstItem, secondItem) => firstItem.simpleTitle - secondItem.simpleTitle) ;
 
 /* Display sources on load */
 function populate () {
