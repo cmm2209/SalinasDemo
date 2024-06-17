@@ -199,11 +199,15 @@ nav#slide-menu {
 
 			&:hover { color: #59e9df; }
 		}
-    
-    li.null {
-      &:hover { color: #ffffff; }
-      cursor:default;
-    }
+
+	li a {
+		color: #ffffff;
+		padding: 6px 0;
+		cursor: pointer;
+		text-decoration: none;
+
+		&:hover { color: #59e9df; }
+	}
     
     li.searchParam {
       padding-left:1rem;

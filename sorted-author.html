@@ -15,12 +15,12 @@
 	<ul>
 		<li id="home">Home</li>
     <li class="null">Search by:</li>
-		<li class="searchParam"><a href="./chronological.html" style="color: #ffffff; text-decoration: none;">Chronology</a></li>
+		<li class="searchParam"><a href="./chronological.html">Chronology</a></li>
 		<li class="searchParam">Geography</li>
     <li class="searchParam">Language</li>
 		<li class="searchParam">Topic</li>
-		<li class="searchParam"><a href="./sorted-author.html" style="color: #ffffff; text-decoration: none;">Author</a></li>
-    <li class="searchParam">Title</li>
+		<li class="searchParam">Author</li>
+    <li class="searchParam"><a href="./sorted-title.html">Title</a></li>
     <li id="about">About</li>
 	</ul>
 </nav>
@@ -31,7 +31,16 @@
     </div>
     <div class="heading">
         <h1>Browse Sources by Author</h1> 
-        
+        <form id="dateSelect"">
+          <label for="earliestDate">View sources created between</label>
+          <input type="number" id="earliestDate" name="earliestDate" min="-28000" max="2020" value="-28000">
+            <label for="latestDate">and</label>
+          <input type="number" id="latestDate" name="latestDate" min="-28000" max="2020" value="2020">
+          <button type="button" id="filter" name="filter">Filter</button>
+          <button type="button" id="reset" name="reset">Reset</button> 
+        <br/>
+        *Please use negative numbers for years BCE.
+        </form>
   </div>
 </div>
 <div class="results">
