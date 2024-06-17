@@ -24,6 +24,10 @@ body {
 	margin: 10px;
 	padding: 10px;
 }
+
+.language {
+	font-weight: bold;
+}
   
 .unblue {
   color:#002333;
